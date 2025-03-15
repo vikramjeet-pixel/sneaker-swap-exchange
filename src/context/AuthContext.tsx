@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { createClient, Session, User } from '@supabase/supabase-js';
 import { toast } from 'sonner';
 
+// Initialize Supabase client with fallback values if env vars are not available
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder-url.supabase.co';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key';
+
 // Initialize Supabase client
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 type AuthContextType = {
   user: User | null;

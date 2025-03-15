@@ -102,7 +102,7 @@ const Sell = () => {
   };
 
   return (
-    <main className="min-h-screen pt-24 pb-16 px-6 md:px-10">
+    <div className="min-h-screen pt-24 pb-16 px-6 md:px-10">
       <div className="max-w-3xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-display font-bold mb-2">Sell Your Sneakers</h1>
@@ -332,7 +332,7 @@ const Sell = () => {
           </form>
         </Form>
       </div>
-    </main>
+    </div>
   );
 };
 

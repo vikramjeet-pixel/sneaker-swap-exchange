@@ -10,6 +10,8 @@ import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import Browse from "./pages/Browse";
 import ProductDetail from "./pages/ProductDetail";
+import Sell from "./pages/Sell";
+import Bids from "./pages/Bids";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +29,8 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/browse" element={<Browse />} />
               <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/sell" element={<Sell />} />
+              <Route path="/bids" element={<Bids />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

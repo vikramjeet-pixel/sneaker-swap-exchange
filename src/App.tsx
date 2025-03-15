@@ -23,21 +23,23 @@ const App = () => (
       <ThemeProvider>
         <AuthProvider>
           <TooltipProvider>
-            <Toaster />
-            <Sonner />
             <div className="flex flex-col min-h-screen">
               <Header />
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/browse" element={<Browse />} />
-                <Route path="/product/:id" element={<ProductDetail />} />
-                <Route path="/sell" element={<Sell />} />
-                <Route path="/bids" element={<Bids />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <main className="flex-grow pt-20">
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/browse" element={<Browse />} />
+                  <Route path="/product/:id" element={<ProductDetail />} />
+                  <Route path="/sell" element={<Sell />} />
+                  <Route path="/bids" element={<Bids />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
               <Footer />
             </div>
+            <Toaster />
+            <Sonner />
           </TooltipProvider>
         </AuthProvider>
       </ThemeProvider>

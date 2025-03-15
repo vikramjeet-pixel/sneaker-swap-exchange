@@ -18,10 +18,15 @@ import { Loader2 } from 'lucide-react';
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialMode?: 'signin' | 'signup';
 }
 
-const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
-  const [mode, setMode] = useState<'signin' | 'signup'>('signin');
+const AuthModal: React.FC<AuthModalProps> = ({ 
+  isOpen, 
+  onClose,
+  initialMode = 'signin'
+}) => {
+  const [mode, setMode] = useState<'signin' | 'signup'>(initialMode);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,6 +34,9 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!email || !password) return;
+    
     setIsSubmitting(true);
     
     try {
@@ -37,14 +45,18 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
       } else {
         await signUp(email, password);
       }
+      setEmail('');
+      setPassword('');
       onClose();
+    } catch (error) {
+      console.error('Authentication error:', error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="text-2xl">

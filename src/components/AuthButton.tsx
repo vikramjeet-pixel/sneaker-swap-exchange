@@ -15,20 +15,24 @@ import AuthModal from './AuthModal';
 const AuthButton = () => {
   const { user, signOut } = useAuth();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [mode, setMode] = useState<'signin' | 'signup'>('signin');
+  const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
   
   const handleSignIn = () => {
-    setMode('signin');
+    setAuthMode('signin');
     setIsAuthModalOpen(true);
   };
   
   const handleSignUp = () => {
-    setMode('signup');
+    setAuthMode('signup');
     setIsAuthModalOpen(true);
   };
 
   const handleSignOut = async () => {
-    await signOut();
+    try {
+      await signOut();
+    } catch (error) {
+      console.error('Sign out error:', error);
+    }
   };
   
   return (
@@ -73,7 +77,8 @@ const AuthButton = () => {
       
       <AuthModal 
         isOpen={isAuthModalOpen} 
-        onClose={() => setIsAuthModalOpen(false)} 
+        onClose={() => setIsAuthModalOpen(false)}
+        initialMode={authMode}
       />
     </>
   );

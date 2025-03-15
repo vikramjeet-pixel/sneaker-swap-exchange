@@ -1,9 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, ShoppingBag, User, Menu, X } from 'lucide-react';
+import { Search, ShoppingBag, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
+import AuthButton from './AuthButton';
 import { cn } from '@/lib/utils';
 
 const Header = () => {
@@ -65,9 +66,7 @@ const Header = () => {
           <Button variant="ghost" size="icon" aria-label="Search">
             <Search className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon" aria-label="Account">
-            <User className="h-5 w-5" />
-          </Button>
+          <AuthButton />
           <ThemeToggle />
         </div>
         
@@ -107,8 +106,8 @@ const Header = () => {
               <Search className="h-5 w-5 mr-2" />
               <span>Search</span>
             </Button>
-            <Button variant="outline" size="icon" className="w-full justify-start">
-              <User className="h-5 w-5 mr-2" />
+            <Button variant="outline" size="icon" className="w-full justify-start" onClick={() => {}}>
+              <AuthButton />
               <span>Account</span>
             </Button>
           </div>

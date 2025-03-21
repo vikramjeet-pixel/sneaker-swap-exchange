@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { Badge } from '@/components/ui/badge';
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -38,6 +39,12 @@ const Hero = () => {
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0">
             Join the community of sneaker enthusiasts. Find rare pairs, sell your collection, and make competitive bids in our authenticated marketplace.
           </p>
+          
+          <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+            <Badge variant="outline" className="px-3 py-1 text-sm">100% Authenticity Guaranteed</Badge>
+            <Badge variant="outline" className="px-3 py-1 text-sm">Free Shipping on Orders $300+</Badge>
+            <Badge variant="outline" className="px-3 py-1 text-sm">24/7 Customer Support</Badge>
+          </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
             <Button asChild size="lg" className="rounded-full transition-all duration-300 hover:translate-y-[-2px]">

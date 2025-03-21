@@ -1,7 +1,13 @@
 
+import { useEffect } from 'react';
 import Hero from '@/components/Hero';
 import FeaturedSneakers from '@/components/FeaturedSneakers';
-import { useEffect } from 'react';
+import Testimonials from '@/components/Testimonials';
+import BrandsShowcase from '@/components/BrandsShowcase';
+import FAQ from '@/components/FAQ';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   useEffect(() => {
@@ -12,6 +18,7 @@ const Index = () => {
   return (
     <main className="flex flex-col min-h-screen">
       <Hero />
+      <BrandsShowcase />
       <FeaturedSneakers />
       
       {/* Statistics Section */}
@@ -72,6 +79,32 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      <Testimonials />
+      
+      {/* CTA Section */}
+      <section className="py-24 px-6 md:px-10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-900/20 dark:to-purple-900/20"></div>
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
+          <h2 className="text-4xl font-display font-bold mb-6">Ready to Step Up Your Sneaker Game?</h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Join thousands of sneaker enthusiasts buying, selling, and bidding on the most exclusive footwear today.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" className="rounded-full">
+              <Link to="/browse">
+                Explore Collection
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="rounded-full">
+              <Link to="/sell">Sell Your Sneakers</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+      
+      <FAQ />
     </main>
   );
 };
